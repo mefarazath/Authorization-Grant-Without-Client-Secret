@@ -1,5 +1,9 @@
 <h1>Authorization Grant without Client Secret</h1>
 
+This repo contains artifacts and configurations required to use authorization grant flow without client_secret for public clients.
+
+Download WSO2 Identity Server at https://wso2.com/identity-and-access-management or for the latest milestone go to https://github.com/wso2/product-is/releases
+
 Steps to try out,
 
 1. Build the jar and place it in WSO2_HOME/repository/components/lib
