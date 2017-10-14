@@ -36,6 +36,7 @@ public class ExtendedBasicAuthClientHandler extends BasicAuthClientAuthHandler {
     private static final String STRICT_CLIENT_VALIDATION_FOR_AUTHZ_CODE_GRANT =
             "StrictClientCredentialValidationForAuthzCodeGrant";
     private static final String AUTHORIZATION_CODE = "authorization_code";
+    private static final String REFRESH_TOKEN_GRANT = "refresh_token";
 
 
     /**
@@ -57,7 +58,7 @@ public class ExtendedBasicAuthClientHandler extends BasicAuthClientAuthHandler {
 
         OAuth2AccessTokenReqDTO oauth2AccessTokenReqDTO = tokReqMsgCtx.getOauth2AccessTokenReqDTO();
 
-        if (isAuthorizationCodeGrant(oauth2AccessTokenReqDTO) &&
+        if (isAuthzCodeOrRefreshGrant(oauth2AccessTokenReqDTO) &&
                 StringUtils.isEmpty(oauth2AccessTokenReqDTO.getClientSecret()) &&
                 !strictlyValidateClientForAuthzCodeGrant) {
             // Client Secret not present for authorization grant request. But we have disabled strict client
@@ -75,7 +76,7 @@ public class ExtendedBasicAuthClientHandler extends BasicAuthClientAuthHandler {
 
         OAuth2AccessTokenReqDTO oauth2AccessTokenReqDTO = tokReqMsgCtx.getOauth2AccessTokenReqDTO();
 
-        if (isAuthorizationCodeGrant(oauth2AccessTokenReqDTO) &&
+        if (isAuthzCodeOrRefreshGrant(oauth2AccessTokenReqDTO) &&
                 StringUtils.isEmpty(oauth2AccessTokenReqDTO.getClientSecret()) &&
                 !strictlyValidateClientForAuthzCodeGrant) {
             // No client authentication for Authorization Code Token requests that come without a secret.
@@ -86,8 +87,17 @@ public class ExtendedBasicAuthClientHandler extends BasicAuthClientAuthHandler {
         }
     }
 
+    private boolean isAuthzCodeOrRefreshGrant(OAuth2AccessTokenReqDTO tokenReqDTO) {
+        return isAuthorizationCodeGrant(tokenReqDTO) || isRefreshTokenGrant(tokenReqDTO);
+    }
+
     private boolean isAuthorizationCodeGrant(OAuth2AccessTokenReqDTO tokenReqDTO) {
         String grantType = tokenReqDTO.getGrantType();
         return StringUtils.equalsIgnoreCase(grantType, AUTHORIZATION_CODE);
+    }
+
+    private boolean isRefreshTokenGrant(OAuth2AccessTokenReqDTO tokenReqDTO) {
+        String grantType = tokenReqDTO.getGrantType();
+        return StringUtils.equalsIgnoreCase(grantType, REFRESH_TOKEN_GRANT);
     }
 }

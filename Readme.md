@@ -25,6 +25,11 @@ authentication and we need to get rid of that.
                     <GrantTypeHandlerImplClass>org.wso2.carbon.identity.oauth2.token.handlers.grant.AuthorizationCodeGrantHandler</GrantTypeHandlerImplClass>
                     <GrantTypeValidatorImplClass>org.wso2.carbon.identity.oauth2.grant.validator.ExtendedAuthzGrantValidator</GrantTypeValidatorImplClass>
                 </SupportedGrantType>
+                 <SupportedGrantType>
+                    <GrantTypeName>refresh_token</GrantTypeName>
+                    <GrantTypeHandlerImplClass>org.wso2.carbon.identity.oauth2.token.handlers.grant.RefreshGrantHandler</GrantTypeHandlerImplClass>
+                    <GrantTypeValidatorImplClass>org.wso2.carbon.identity.oauth2.grant.validator.ExtendedRefreshGrantValidator</GrantTypeValidatorImplClass>
+                 </SupportedGrantType>
      </SupportedGrantTypes>
       ....
 </OAuth>
