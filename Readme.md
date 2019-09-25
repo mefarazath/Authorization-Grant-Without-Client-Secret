@@ -1,6 +1,6 @@
 <h1>Authorization Grant without Client Secret</h1>
 
-This approach is only required for WSO2 Identity Server 5.4.0 and older versions
+This approach is only required for WSO2 Identity Server 5.6.0 and older versions
 
 This repo contains artifacts and configurations required to use authorization grant flow without client_secret for public clients.
 
