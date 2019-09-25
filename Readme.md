@@ -60,7 +60,7 @@ Response:
 ````
 
 6. Get an authorization code,
-(Refer: http://blog.farazath.com/2016/05/trying-out-oauth2-authorization-code.html you can skip the Service Provider 
+(Refer: https://farasath.blogspot.com/2016/05/trying-out-oauth2-authorization-code.html you can skip the Service Provider 
 creation part)
 ````
 https://localhost:9443/oauth2/authorize?response_type=code&client_id=XALwgcRGsR4zud4RsokMmtNm3xQa&redirect_uri=https://localhost/callback&scope=read
