@@ -1,6 +1,8 @@
 <h1>Authorization Grant without Client Secret</h1>
 
-This approach is only required for WSO2 Identity Server 5.6.0 and older versions
+This approach is only required for WSO2 Identity Server 5.6.0 and older versions.
+
+For IS 5.7.0 above you can simply enable the 'Allow authentication without the client secret' option in the OAuth2 configurations (ie. you can skip steps 1 to 3). (https://docs.wso2.com/display/IS570/Configuring+OAuth2-OpenID+Connect+Single-Sign-On). 
 
 This repo contains artifacts and configurations required to use authorization grant flow without client_secret for public clients.
 
